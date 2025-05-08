@@ -1,0 +1,9 @@
+using Godot;
+
+namespace {{Namespace}};
+
+partial class {{ClassName}} {
+    private static PackedScene __Scene__ => field ??= GD.Load<PackedScene>("{{ResourcePath}}");
+
+    public static {{ClassName}} Instantiate() => __Scene__.Instantiate<{{ClassName}}>();
+}

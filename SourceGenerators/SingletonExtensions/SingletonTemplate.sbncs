@@ -1,0 +1,17 @@
+namespace {{Namespace}};
+
+partial class {{ClassName}} {
+    public static {{ClassName}} Instance { get; private set; }
+
+    public override partial void _EnterTree() {
+        Instance = this;
+        TreeExiting += ClearInstance;
+    }
+
+    private void ClearInstance() {
+    	if(Instance == this) {
+    		Instance = null;
+    	}
+    	TreeExiting -= ClearInstance;
+	}
+}

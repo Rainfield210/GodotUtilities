@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <!-- Project Settings -->
+    <PropertyGroup>
+        <LangVersion>latest</LangVersion>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <AssemblyName>Rainfield.GodotUtilities.SourceGenerators</AssemblyName>
+        <RootNamespace>GodotUtilities.SourceGenerators</RootNamespace>
+    </PropertyGroup>
+    
+    <!-- Package Settings -->
+    <PropertyGroup>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    </PropertyGroup>
+    <PropertyGroup>
+        <Authors>Rainfield</Authors>
+        <Description>Godot source generators modified based on firebelly.GodotUtils.SourceGenerators</Description>
+        <PackageId>Rainfield.GodotUtilities.SourceGenerators</PackageId>
+        <PackageProjectUrl>https://github.com/Rainfield210/GodotUtilities</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Rainfield/GodotUtilities</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>1.0.2</Version>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" Link="Package\docs\README.md" />
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers\dotnet\cs" Link="Package\analyzers\dotnet\cs\$(AssemblyName).dll" />
+    </ItemGroup>
+
+    <!-- Scriban Settings -->
+    <ItemGroup>
+        <EmbeddedResource Include="**\*.sbncs"/>
+    </ItemGroup>
+    <PropertyGroup>
+        <PackageScribanIncludeSource>true</PackageScribanIncludeSource>
+    </PropertyGroup>
+
+    <!-- Package References -->
+    <ItemGroup>
+        <PackageReference Include="IndexRange" Version="1.1.0" PrivateAssets="all" />
+        <PackageReference Include="IsExternalInit" Version="1.0.3" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.11.0" PrivateAssets="all"/>
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="5.0.0" />
+        <PackageReference Include="Microsoft.CSharp" Version="4.7.0" PrivateAssets="all"/>
+        <PackageReference Include="Scriban" Version="6.5.2" IncludeAssets="build" PrivateAssets="all" />
+    </ItemGroup>
+
+</Project>
