@@ -1,0 +1,10 @@
+{{~NSOpen~}}
+{{NSIndent}}partial class {{ClassName}} {
+{{NSIndent}}    public static {{ClassName}} Instance { get; private set; }
+{{NSIndent}}    public override partial void _EnterTree() {
+{{NSIndent}}        Instance = this;
+{{NSIndent}}        TreeExiting += Clear;
+{{NSIndent}}    }
+{{NSIndent}}    private static void Clear() => Instance = null;
+{{NSIndent}}}
+{{~NSClose~}}

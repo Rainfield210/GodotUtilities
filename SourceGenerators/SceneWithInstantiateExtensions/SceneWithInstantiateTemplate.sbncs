@@ -1,0 +1,10 @@
+using Godot;
+
+{{~NSOpen~}}
+{{NSIndent}}partial class {{ClassName}} {
+{{NSIndent}}    private static PackedScene __scene__;
+{{NSIndent}}    private static PackedScene __Scene__ => __scene__ ??= GD.Load<PackedScene>("{{ResourcePath}}");
+
+{{NSIndent}}    public static {{ClassName}} Instantiate() => __Scene__.Instantiate<{{ClassName}}>();
+{{NSIndent}}}
+{{~NSClose~}}
