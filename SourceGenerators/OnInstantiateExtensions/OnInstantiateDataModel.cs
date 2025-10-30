@@ -24,10 +24,8 @@ internal class OnInstantiateDataModel : MemberDataModel {
             var classPath = method.ContainingType.ClassPath();
             var resourcePath = GD.GetResourcePath(classPath, godotProjectDir);
             resourcePath = Path.ChangeExtension(resourcePath, "tscn");
-            var className = method.ContainingType.Name;
-            var snakeCaseClassName = className.ToSnakeCase();
             var pathParts = resourcePath.Split('/');
-            pathParts[^1] = snakeCaseClassName + Path.GetExtension(resourcePath);
+            pathParts[^1] = method.ContainingType.Name + Path.GetExtension(resourcePath);
             return string.Join("/", pathParts);
         }
     }

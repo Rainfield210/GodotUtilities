@@ -11,12 +11,12 @@ https://www.nuget.org/packages/Rainfield.GodotUtilities.SourceGenerators/
 
 # Source Generation
 ## [OnInstantiate]
-Use this attribute to generate an `Instantiate` method that loads the `.tscn` file (in snake case) in the directory where the class file is located to instantiate and return the instance.  
+Use this attribute to generate an `Instantiate` method that loads the `.tscn` file in the directory where the class file is located to instantiate and return the instance.  
 The path is as follows:
 ```
 folder/
     - MyScene.cs
-    - my_scene.tscn
+    - MyScene.tscn
 ```
 
 ```csharp
@@ -34,7 +34,7 @@ public partial class MyScene : Node {
 Generates(simplified):  
 ```csharp
     private static PackedScene __scene__;
-    private static PackedScene __Scene__ => __scene__ ??= GD.Load<PackedScene>("res://path/to/my_scene.tscn");
+    private static PackedScene __Scene__ => __scene__ ??= GD.Load<PackedScene>("res://path/to/MyScene.tscn");
     
     public static MyScene Instantiate(string myArg1, int myArg2) {
         var scene = __Scene__.Instantiate<MyScene>();

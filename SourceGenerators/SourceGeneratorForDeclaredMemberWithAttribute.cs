@@ -22,7 +22,7 @@ public abstract class
 
     public void Initialize(GeneratorContext context) {
         foreach (var (name, source) in StaticSources)
-            context.RegisterPostInitializationOutput(x => x.AddSource($"{name}.g.cs", source));
+            context.RegisterPostInitializationOutput(x => x.AddSource($"{name}.generated.cs", source));
 
         var syntaxProvider = context.SyntaxProvider.CreateSyntaxProvider(IsSyntaxTarget, GetSyntaxTarget);
         var compilationProvider = context.CompilationProvider.Combine(syntaxProvider.Collect())
@@ -101,7 +101,7 @@ public abstract class
             => new() { Title = "Internal Error", Message = e.Message };
     }
 
-    private const string Ext = ".g.cs";
+    private const string Ext = ".generated.cs";
     private const int MaxFileLength = 255;
 
     protected virtual string GenerateFilename(ISymbol symbol) {

@@ -15,9 +15,8 @@ internal class SceneWithInstantiateDataModel : ClassDataModel {
             var classPath = symbol.ClassPath();
             var resourcePath = GD.GetResourcePath(classPath);
             resourcePath = Path.ChangeExtension(resourcePath, "tscn");
-            var snakeCaseClassName = ClassName.ToSnakeCase();
             var pathParts = resourcePath.Split('/');
-            pathParts[^1] = snakeCaseClassName + Path.GetExtension(resourcePath);
+            pathParts[^1] = ClassName + Path.GetExtension(resourcePath);
             return string.Join("/", pathParts);
         }
     }
